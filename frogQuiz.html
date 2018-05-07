@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Check Button Exercise</title>
+    <style>
+        
+        .container{
+            margin: 100px 10px 0 200px;
+        }
+    
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h3 id="questionHeading"></h3>
+        <input type="text" id="myInput">
+        <button id="submit">Submit</button>
+        <h4 id="confirmHeading"></h4>
+    </div>
+    
+    <script>
+        
+        var submitAnswer = document.getElementById('submit');
+        
+        var confirmHeading = document.getElementById('confirmHeading');
+        var questionHeading = document.getElementById('questionHeading');
+        
+        var questionOne = function(){
+            
+            questionHeading.innerHTML = 'What type of animal is a frog?';
+            submitAnswer.onclick = function(){onSubmit('amphibian', questionTwo)};
+            
+        }();
+        
+        var questionTwo = function(){
+            
+            questionHeading.innerHTML = 'Do frogs eat their own skin?';
+            confirmHeading.innerHTML ='';
+            submitAnswer.onclick = function(){onSubmit('yes', questionThree)};
+        };
+        
+        var questionThree = function(){
+            
+            questionHeading.innerHTML = 'What bodypart do frogs use to swallow?';
+            confirmHeading.innerHTML ='';
+            submitAnswer.onclick = function(){onSubmit('eyes', congratulations)};
+        };
+        
+        var congratulations = function(){
+            
+            questionHeading.innerHTML = 'Well done, you have completed the frog quiz!';
+            questionHeading.style.fontSize = '3em';
+            document.getElementById('myInput').style.display = 'none';
+            confirmHeading.style.display = 'none';
+            submitAnswer.style.display = 'none';
+        };
+        
+        function onSubmit(answer, nextQuestion){
+            var userInput = document.getElementById('myInput').value;
+            
+            if (userInput === answer){
+                confirmHeading.innerHTML ='Correct!'
+                setTimeout(nextQuestion, 1000);
+            } else {
+                confirmHeading.innerHTML = 'Incorrect, please try again.'
+            }
+        };
+        
+        
+            
+//            if (userInput === 'amphibian'){
+//                confirmHeading.innerHTML = 'Correct!!!'
+//            } else {
+//                confirmHeading.innerHTML = 'Incorrect, please try again.'
+//            }
+//            
+//            function question2(){
+//                questionHeading.innerHTML = 'Do frogs eat their own skin?'
+//            }
+//                
+//            console.log(userInput);
+        
+    </script>
+</body>
+</html>
