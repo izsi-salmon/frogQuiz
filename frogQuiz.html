@@ -26,10 +26,10 @@
         var confirmHeading = document.getElementById('confirmHeading');
         var questionHeading = document.getElementById('questionHeading');
         
-        var questionOne = function(){
+        var questionOne = function(){ // Question one runs as soon as the page loads
             
             questionHeading.innerHTML = 'What type of animal is a frog?';
-            submitAnswer.onclick = function(){onSubmit('amphibian', questionTwo)};
+            submitAnswer.onclick = function(){onSubmit('amphibian', questionTwo)}; // Here we specify what the correct answer to the question is and what question to move onto when the correct answer is submitted
             
         }();
         
@@ -47,7 +47,7 @@
             submitAnswer.onclick = function(){onSubmit('eyes', congratulations)};
         };
         
-        var congratulations = function(){
+        var congratulations = function(){ // This is the last function that runs which confirms the user has finnished the quiz
             
             questionHeading.innerHTML = 'Well done, you have completed the frog quiz!';
             questionHeading.style.fontSize = '3em';
@@ -56,30 +56,17 @@
             submitAnswer.style.display = 'none';
         };
         
-        function onSubmit(answer, nextQuestion){
+        // Here we are creating a submit function that checks the answer and changes to the next question if correct
+        function onSubmit(answer, nextQuestion){ // Here we are parametres so we can re-use the function with unique answers depending on what we specify in our arguments in the question functions above
             var userInput = document.getElementById('myInput').value;
             
-            if (userInput === answer){
+            if (userInput === answer){ // If userInput is equal to the answer specified in the argument, do this:
                 confirmHeading.innerHTML ='Correct!'
-                setTimeout(nextQuestion, 1000);
+                setTimeout(nextQuestion, 1000); // When the answer is correct, move onto the next question
             } else {
                 confirmHeading.innerHTML = 'Incorrect, please try again.'
             }
         };
-        
-        
-            
-//            if (userInput === 'amphibian'){
-//                confirmHeading.innerHTML = 'Correct!!!'
-//            } else {
-//                confirmHeading.innerHTML = 'Incorrect, please try again.'
-//            }
-//            
-//            function question2(){
-//                questionHeading.innerHTML = 'Do frogs eat their own skin?'
-//            }
-//                
-//            console.log(userInput);
         
     </script>
 </body>
